@@ -9,6 +9,7 @@ import org.springframework.util.Assert;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -19,13 +20,6 @@ public class ProfileService {
     @Autowired
     public ProfileService(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
-    }
-
-
-
-    public static class Person {
-        String id;
-        String searchingBuddy;
     }
 
     public List<Profile> getAllProfiles() {
@@ -70,5 +64,15 @@ public class ProfileService {
         updatedProfile.setBuddy(buddy);
         return profileRepository.save(updatedProfile);
     }
-//
+
+    public Profile fetchBuddy(String id, String buddy, int index) {
+        List<Profile> buddies = profileRepository.findByIdNot(id).stream()
+                .filter(profile -> buddy.equals(profile.getBuddy()))
+                .collect(Collectors.toList());
+        if (index >= 0 && index < buddies.size()) {
+            return buddies.get(index);
+        }
+        return null;
+    }
+
 }

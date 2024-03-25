@@ -39,15 +39,21 @@ public class ProfileController {
         Profile createdProfile = profileService.saveOrUpdateProfile(profile);
         return new ResponseEntity<>(createdProfile, HttpStatus.CREATED);
     }
-    @PutMapping("/updateUniversity/{id}")
+    @PutMapping("/{id}/updateUniversity")
     public ResponseEntity<Profile> updateUniversity(@PathVariable String id, @RequestBody String university) {
         Profile updatedProfile = profileService.updateUniversity(id, university);
         return new ResponseEntity<>(updatedProfile, HttpStatus.OK);
     }
 
-    @PutMapping("/updateBuddy/{id}")
+    @PutMapping("/{id}/updateBuddy")
     public ResponseEntity<Profile> updateBuddy(@PathVariable String id, @RequestBody String buddy) {
         Profile updatedProfile = profileService.updateBuddy(id, buddy);
         return new ResponseEntity<>(updatedProfile, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/fetchBuddy/{buddy}/{index}")
+    public ResponseEntity<Profile> fetchBuddy (@PathVariable String id, @PathVariable String buddy, @PathVariable int index){
+        Profile fetchedBuddy = profileService.fetchBuddy(id, buddy, index);
+        return new ResponseEntity<>(fetchedBuddy, HttpStatus.OK);
     }
 }

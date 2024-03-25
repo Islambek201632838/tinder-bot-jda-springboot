@@ -8,11 +8,11 @@ public class SearchCommand implements CommandHandler {
     @Override
     public void execute(SlashCommandInteractionEvent event) {
         Button friend = Button.primary("friend","Friend");
-        Button roomate = Button.primary("roommate", "Roommate");
+        Button roommate = Button.primary("roommate", "Roommate");
         Button studyBuddy = Button.primary("study_buddy", "Study Buddy");
         Button travelBuddy = Button.primary("travel_buddy", "Travel Buddy");
         event.reply("Select your buddy you searching for")
-                .addActionRow(friend, roomate, studyBuddy, travelBuddy)
+                .addActionRow(friend, roommate, studyBuddy, travelBuddy)
                 .queue();
     }
 
