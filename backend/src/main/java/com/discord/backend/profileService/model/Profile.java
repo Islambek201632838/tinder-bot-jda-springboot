@@ -30,6 +30,7 @@ public class Profile {
     @Column(nullable = false, length = 2048)
     private String aboutMe;
 
+    //ID VALIDATION
 
 
     // Getters

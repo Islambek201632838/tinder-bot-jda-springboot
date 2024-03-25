@@ -21,7 +21,7 @@ public class SelectionMenuListener extends ListenerAdapter {
 
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(url+"updateBuddy/"+ userId))
+                    .uri(URI.create(url + userId +"/updateBuddy"))
                     .header("Content-Type", "text/plain")
                     .PUT(HttpRequest.BodyPublishers.ofString(selectedBuddy))
                     .build();
@@ -43,7 +43,7 @@ public class SelectionMenuListener extends ListenerAdapter {
 
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(url+"updateUniversity/"+ userId))
+                    .uri(URI.create(url + userId +"/updateUniversity"))
                     .header("Content-Type", "text/plain")
                     .PUT(HttpRequest.BodyPublishers.ofString(selectedUniversity))
                     .build();
